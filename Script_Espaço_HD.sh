@@ -12,5 +12,17 @@ espaco=`df -h | grep $HD | awk '{print $2}'`
 usado=`df -h | grep $HD | awk '{print $3}'`
 #Espaço livre no disco
 free=`df -h | grep $HD | awk '{print $4}'`
+#Espaço usado em percentual
+percent=`df -h | grep $HD | awk '{print $5}'`
 #Apenas um echo de informações do Disco
-echo "HD atual de: $espaco, utilizado: $usado, Espaço Livre: $free"
+echo "----------------------------------"
+echo "
+      Espaço TOTAL do HD: $espaco,
+      Espaço Utilizado: $usado, 
+      Espaço Livre: $free,
+      Porcentagem de uso: $percent
+      "
+echo "----------------------------------"
+while :
+do 
+[[ $percent < "50%"]] && echo -e "HD Cheio, favor verificar" || echo "HD com Espaço!"
