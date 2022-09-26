@@ -26,7 +26,7 @@ echo "
 echo "----------------------------------"
 while :
 do
-  if [ $percent > "50%" ]; then
+  if [ $percent > 50% ]; then
     echo "HD Cheio, favor verificar"
     break
   else
