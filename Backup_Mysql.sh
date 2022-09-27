@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #Só de teste, simples, da para colocar para salvar com data, escolher outros locais, automatizar com horarios, etc.....
-#Definindo as variaveis, pode colocar em outro arquivo para ficar mais seguro.
+#Definindo as variaveis, pode colocar em outro arquivo para ficar mais seguro e utilizar em mais de um arquivo.
 HOST="192.168.50.250"
 LOGIN="user"
 SENHA="senha123"
