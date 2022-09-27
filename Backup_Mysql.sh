@@ -1,4 +1,6 @@
 #!/bin/bash
+# Feito por Felipe Alves
+
 
 #Só de teste, simples, da para colocar para salvar com data, escolher outros locais, automatizar com horarios, etc.....
 #Definindo as variaveis, pode colocar em outro arquivo para ficar mais seguro e utilizar em mais de um arquivo.

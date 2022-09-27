@@ -1,4 +1,5 @@
 #!/bin/bash
+# Feito por Felipe Alves
 SERVIDORES=(
   "172.22.228.122"
   

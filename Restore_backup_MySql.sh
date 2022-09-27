@@ -1,4 +1,5 @@
 #!/bin/bash
+# Feito por Felipe Alves
 
 #variaveis
 HOST="192.168.50.250"

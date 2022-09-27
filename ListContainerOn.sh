@@ -1,4 +1,6 @@
 #!/bin/bash
+# Feito por Felipe Alves
+
 
 echo "Atualizando o Servidor"
 apt-get update && apt-get upgrade -y && apt-get install curl -y 
