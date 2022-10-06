@@ -1,0 +1,38 @@
+##PASSO A PASSO PARA CRIAR O CLUSTER LOCALMENTE
+
+
+#1º Precisamos de  um gerenciador de VMs(Virtual Box, VMware, etccc)
+#2º Se formos criar manualmente cada máquina, vamos demorar muito para fazer
+#por isso podemos utilizar o VAGRANT para automatizar a criação dessas VMs
+#3º Instala o Gerenciador de VM (Virtual Box, VMware, Hyper-V, etccc)
+#4º Instala o Vagrant(ele automaticamente 
+# reconhece qual está sendo usado)
+#5º Cria uma pasta para seu Cluster na sua máquina e abre ela no terminal
+#PowerShell caso for Windows.
+#6º Criar o arquivo de configuração do Vangrant com o 'vagrant init'
+#6.1 Edita o arquivo criado que foi o Vagrantfile em um editor de texto
+#e configura conforme vai ser sua estrutura, define a imagem da VM(qual
+# OS será usado na variavel 'config.vm.box=...')
+#descomenta a linha 'config.vm.network=public_network'
+#descomenta a linha 'config.vm.provision="shell", path: "instalar-docker.sh"'
+#para provisionar a vm e executar o script aí no caso
+#6.2 Cria o arquivo para instalar o docker com o nome definido, só pegar 
+#o comando correto na documentação do Docker(2 linhas de comando somente)
+#7 Da um 'vagrant up' no terminal do seu computador para começar a criar
+#as VMs, talvez demore se não tiver as IMAGES baixadas no seu pc 
+#7.1 só confirmar no seu Gerenciado de VM se foram criadas as máquinas
+#7.2 No terminal da um 'vagrant ssh' para acessar a VM criada
+# por padrao o usuario e senha criado para as VM é 'vagrant'
+#7.3 para apagar a VM só usar o comando 'vagrant destroy -f' 
+#8.0 após Criar todas as VMs, devemos iniciar o cluster,
+#8.1 devemos definir o IP da rede do Cluster com o comando "docker swarm
+#init --advertise-addr 10.0.0.200" ->vc deve mudar o ip de acordo com sua
+#rede
+#8.2 Com isso vai gerar o comando de '...join --token....' para adcionarmos
+#as outras vms ao cluster
+#9.0 No terminal do nó principal executa "docker node ls" para verificar o
+#Cluster, se está ok e rodando belezinha
+#
+#
+
+

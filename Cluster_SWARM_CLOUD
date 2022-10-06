@@ -1,0 +1,64 @@
+##PASSO A PASSO PARA CRIAR O CLUSTER EM NUVEM
+
+
+#Para criarmos em NUVEM esse Cluster primeiro temos que...
+#1º - Criar a rede, sub-rede, tabela de roteamento e gatway.
+#2º - Criar as VMs na nuvem(AWS, GCP ou Azure) que farão parte do Cluster.
+#2.1- Salva os arquivos .ppk,.pen para acesso externo as VMs 
+#2.2- atribuir IP publico para acesso externo
+#2.3- Grupo de Segurança para configurar firewall
+#2.4- temos que jogar o script de criação da docker para agilizar
+#na documentação tem o script certinho e ja pronto para isso
+#2.5- Manda criar a quantidade desejada de VMs do cluster, lembrando que 
+#para o Swarm funcionar precisa ter pelo menos 51% de redundancia de Vms
+#2.6- pré configuração de cada VM para subirmos o cluster
+#2.7- Precisamos definir uma VM para ser o nó gerenciador do Cluster
+#2.8- para melhor gerenciamento, ideal é trocar o nome da máquina com o
+#comando 'hostnamectl hostname VM1'
+#3.0- Chama o Swarm para iniciar o Cluster 
+#docker swarm init  -> para inicializar o Cluster, ele vai gerar um comando
+#  'docker swarm join --token xzyxyxzyxzyxxxzyxxzyxxx -p 172.3x.x.x:2345'
+#3.1- acessa as outras vms e faz o procedimento de mudar o hostname(2.8)
+#3.2- Adicionar a VM/nó ao Cluster com o comando gerado na máquina que
+# ficou sendo o gerenciador, ou seja  máquina principal, caso der erro,
+# verificaremos o firewall, no qual criamos um grupo para o Cluster,
+# devemos liberar a porta que por gerada ao final do IP da máquina principal
+# ao liberar a porta TCP no firewall para o IP certo, irá fazer a conexão
+# normalmente.
+#3.4- digita o comando docker swarm leave -> para evitar qualquer erro ao
+#tentar entrar ao Cluster anteriormente, com o comando limpa qualquer 
+#tentativa e ate mesmo entrada a um Cluster.
+#3.5- Colocar a VM novamente ao Cluster com o comando '.swarm join --to..'
+#3.6- Depois de todas as VMs configuradas podemos verificar se está rodando
+# todos os nós criados com o comando 'docker node ls' dentro da VM principal
+#3.7- Após tudo rodando só subir os container
+#
+#4.0 Para criarmos um serviço dentro do docker
+#'docker service create --name web-server --replicas 10 -p 80:80 httpd'
+#no caso o nome vc quem define, a quantidade de replicas o expose da porta
+#e por ultimo qual a imagem dos containers
+# Bom conferir se a porta definida no caso ao 80 está liberada no Firewall
+# porta 80(nesse caso) e tipo TCP e liberar geral seta ip 0.0.0.0/0
+#podemos verificar os serviços criado com o comando
+# " docker service ps web-server "
+#Caso queira excluir algum dos nós de serviço criado para que nao receba
+#nenhum container só executar
+# " docker node update --availability drain 'nomeNÓsemAspas' "
+
+
+#5.0 - Para rodar beleza e não ter gargalo na aplicação o ideal é redirecionar
+#as requisoes entre os nós para não pesar somente um
+#
+#
+#
+#
+#
+
+
+
+
+
+
+
+
+
