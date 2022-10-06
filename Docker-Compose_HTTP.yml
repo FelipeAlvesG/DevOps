@@ -1,0 +1,13 @@
+#Criar a pasta website, criar o index. ou jogar o projeto ja pronto dentro
+#antes de rodar alterar o nome para docker-compose.yml
+
+
+version: '3.3'
+services:
+  apache:
+    image: httpd:latest
+    container_name: my-apache-app
+    ports:
+    - '80:80'
+    volumes:
+    - ./website:/usr/local/apache2/htdocs
