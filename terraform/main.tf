@@ -9,20 +9,20 @@ terraform {
 
 # Configure the DigitalOcean Provider
 provider "digitalocean" {
-  token = "var.do_token"
+  token = var.do_token
 }
 
 resource "digitalocean_droplet" "web" {
   image  = "ubuntu-20-04-x64"
   name   = "jenkins"
-  region = "nyc1"
+  region = var.region
   size   = "s-2vcpu-2gb"
   ssh_keys = [data.digitalocean_ssh_key.jornada.id]
 
 }
 
-data "digitalocean_ssh_key" "jornada" {
-  name = "Jornada"
+data "digitalocean_ssh_key" "ssh_key_name" {
+  name = var.ssh_key_name
 }
 
 resource "digitalocean_kubernetes_cluster" "k8s" {
@@ -37,4 +37,14 @@ resource "digitalocean_kubernetes_cluster" "k8s" {
   }
 }
 
+variable "do_token" {
+  default = ""
+  
+}
+variable "region" {
+  default = "nyc1"
+}
 
+variable "ssh_key_name" {
+  default = "Jornada"
+}
