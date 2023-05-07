@@ -34,11 +34,10 @@ sudo chmod +x /usr/local/bin/docker-compose
 #Verificando Versao
 docker-compose --version
 
-sudo systemctl status docker
-
-echo "Veirifque se a mensagem acima e de versao esta correta conforme a de baixo!"
+echo "Verifique se a mensagem acima e de versao esta correta conforme a de baixo!"
 echo "docker-compose version 1.26.0, build"
 
 
+sudo systemctl status docker
 
 
