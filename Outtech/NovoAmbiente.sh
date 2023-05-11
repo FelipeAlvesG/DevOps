@@ -37,7 +37,7 @@ docker-compose --version
 echo "Verifique se a mensagem acima e de versao esta correta conforme a de baixo!"
 echo "docker-compose version 1.26.0, build"
 
-
+docker network create core
 sudo systemctl status docker
 
 
